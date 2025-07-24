@@ -30,12 +30,22 @@
 
 #pragma once
 
+#include "core/io/ip_address.h"
 #include "tests/test_macros.h"
+#include "modules/enet/enet_connection.h"
 
 namespace TestENetConnection {
 
-TEST_CASE("[ENetConnection] Example test case") {
-    // TODO: Remove this comment and write your test code here.
+TEST_CASE("[ENetConnection] Instantiation") {
+    Ref<ENetConnection> enet_connection;
+    enet_connection.instantiate();
+
+    enet_connection->create_host();
+
+    Ref<ENetConnection> enet_connection_bound;
+    enet_connection_bound.instantiate();
+
+    enet_connection_bound->create_host_bound(IPAddress("192.168.1.10"), 6666);
 }
 
 } // namespace TestENetConnection
