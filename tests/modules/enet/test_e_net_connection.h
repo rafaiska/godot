@@ -31,21 +31,31 @@
 #pragma once
 
 #include "core/io/ip_address.h"
-#include "tests/test_macros.h"
 #include "modules/enet/enet_connection.h"
+#include "tests/test_macros.h"
 
 namespace TestENetConnection {
 
-TEST_CASE("[ENetConnection] Instantiation") {
+TEST_CASE("[ENetConnection] Create host") {
     Ref<ENetConnection> enet_connection;
     enet_connection.instantiate();
-
     enet_connection->create_host();
 
+    CHECK_EQ(0.0, enet_connection->pop_statistic(ENetConnection::HOST_TOTAL_RECEIVED_DATA));
+    CHECK_EQ(0.0, enet_connection->pop_statistic(ENetConnection::HOST_TOTAL_RECEIVED_PACKETS));
+    CHECK_EQ(0.0, enet_connection->pop_statistic(ENetConnection::HOST_TOTAL_SENT_DATA));
+    CHECK_EQ(0.0, enet_connection->pop_statistic(ENetConnection::HOST_TOTAL_SENT_PACKETS));
+}
+
+TEST_CASE("[ENetConnection] Create host boound") {
     Ref<ENetConnection> enet_connection_bound;
     enet_connection_bound.instantiate();
+    enet_connection_bound->create_host_bound(IPAddress("192.168.1.10"), 6660);
 
-    enet_connection_bound->create_host_bound(IPAddress("192.168.1.10"), 6666);
+    CHECK_EQ(0.0, enet_connection_bound->pop_statistic(ENetConnection::HOST_TOTAL_RECEIVED_DATA));
+    CHECK_EQ(0.0, enet_connection_bound->pop_statistic(ENetConnection::HOST_TOTAL_RECEIVED_PACKETS));
+    CHECK_EQ(0.0, enet_connection_bound->pop_statistic(ENetConnection::HOST_TOTAL_SENT_DATA));
+    CHECK_EQ(0.0, enet_connection_bound->pop_statistic(ENetConnection::HOST_TOTAL_SENT_PACKETS));
 }
 
 } // namespace TestENetConnection
