@@ -37,25 +37,25 @@
 namespace TestENetConnection {
 
 TEST_CASE("[ENetConnection] Create host") {
-    Ref<ENetConnection> enet_connection;
-    enet_connection.instantiate();
-    enet_connection->create_host();
+	Ref<ENetConnection> enet_connection;
+	enet_connection.instantiate();
+	enet_connection->create_host();
 
-    CHECK_EQ(0.0, enet_connection->pop_statistic(ENetConnection::HOST_TOTAL_RECEIVED_DATA));
-    CHECK_EQ(0.0, enet_connection->pop_statistic(ENetConnection::HOST_TOTAL_RECEIVED_PACKETS));
-    CHECK_EQ(0.0, enet_connection->pop_statistic(ENetConnection::HOST_TOTAL_SENT_DATA));
-    CHECK_EQ(0.0, enet_connection->pop_statistic(ENetConnection::HOST_TOTAL_SENT_PACKETS));
+	CHECK_EQ(0.0, enet_connection->pop_statistic(ENetConnection::HOST_TOTAL_RECEIVED_DATA));
+	CHECK_EQ(0.0, enet_connection->pop_statistic(ENetConnection::HOST_TOTAL_RECEIVED_PACKETS));
+	CHECK_EQ(0.0, enet_connection->pop_statistic(ENetConnection::HOST_TOTAL_SENT_DATA));
+	CHECK_EQ(0.0, enet_connection->pop_statistic(ENetConnection::HOST_TOTAL_SENT_PACKETS));
 }
 
 TEST_CASE("[ENetConnection] Create host bound") {
-    Ref<ENetConnection> enet_connection_bound;
-    enet_connection_bound.instantiate();
-    enet_connection_bound->create_host_bound(IPAddress("127.0.0.1"), 6660);
+	Ref<ENetConnection> enet_connection_bound;
+	enet_connection_bound.instantiate();
+	enet_connection_bound->create_host_bound(IPAddress("127.0.0.1"), 6660);
 
-    CHECK_EQ(0.0, enet_connection_bound->pop_statistic(ENetConnection::HOST_TOTAL_RECEIVED_DATA));
-    CHECK_EQ(0.0, enet_connection_bound->pop_statistic(ENetConnection::HOST_TOTAL_RECEIVED_PACKETS));
-    CHECK_EQ(0.0, enet_connection_bound->pop_statistic(ENetConnection::HOST_TOTAL_SENT_DATA));
-    CHECK_EQ(0.0, enet_connection_bound->pop_statistic(ENetConnection::HOST_TOTAL_SENT_PACKETS));
+	CHECK_EQ(0.0, enet_connection_bound->pop_statistic(ENetConnection::HOST_TOTAL_RECEIVED_DATA));
+	CHECK_EQ(0.0, enet_connection_bound->pop_statistic(ENetConnection::HOST_TOTAL_RECEIVED_PACKETS));
+	CHECK_EQ(0.0, enet_connection_bound->pop_statistic(ENetConnection::HOST_TOTAL_SENT_DATA));
+	CHECK_EQ(0.0, enet_connection_bound->pop_statistic(ENetConnection::HOST_TOTAL_SENT_PACKETS));
 }
 
 } // namespace TestENetConnection
