@@ -47,10 +47,10 @@ TEST_CASE("[ENetConnection] Create host") {
     CHECK_EQ(0.0, enet_connection->pop_statistic(ENetConnection::HOST_TOTAL_SENT_PACKETS));
 }
 
-TEST_CASE("[ENetConnection] Create host boound") {
+TEST_CASE("[ENetConnection] Create host bound") {
     Ref<ENetConnection> enet_connection_bound;
     enet_connection_bound.instantiate();
-    enet_connection_bound->create_host_bound(IPAddress("192.168.1.10"), 6660);
+    enet_connection_bound->create_host_bound(IPAddress("127.0.0.1"), 6660);
 
     CHECK_EQ(0.0, enet_connection_bound->pop_statistic(ENetConnection::HOST_TOTAL_RECEIVED_DATA));
     CHECK_EQ(0.0, enet_connection_bound->pop_statistic(ENetConnection::HOST_TOTAL_RECEIVED_PACKETS));
